@@ -17,7 +17,7 @@
 
   .footer {
     padding: 20px;
-    background-color: darkolivegreen;
+    background-color: rgb(138, 152, 117);
     opacity: 60%;
     color: white;
     text-align: center;
@@ -38,7 +38,8 @@
   }
 
   #button {
-    background-color: darkolivegreen;
-    opacity: 60%;
+    background-color: rgb(138, 152, 117);
+    opacity: 70%;
     color:white;
+    border:none;
   }
