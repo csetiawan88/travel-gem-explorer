@@ -1,6 +1,6 @@
-# Tourist Destination Showcase
+# Travel Gem Explorer
 
-Welcome to the Tourist Destination Showcase, a web application that allows users to explore and learn about popular tourist destinations around NSW. Users can view destination details, leave comments, and engage in discussions about their favorite places to visit.
+Welcome to the Travel Gem Explorer, a web application that allows users to explore and learn about popular tourist destinations around NSW. Users can view destination details, leave comments, and engage in discussions about their favorite places to visit.
 
 ## Features
 
@@ -102,7 +102,7 @@ Handlebars.js templates render dynamic HTML for various pages, such as login, re
 
 ## Getting Started
 
-To run the Tourist Destination Showcase application please visit the following URL: 
+To run the Travel Gem Explorer application please visit the following URL: 
 
 ## Contributing
 
@@ -114,4 +114,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Enjoy exploring the hidden gems of tourist destinations with the Tourist Destination Showcase application!
+Enjoy exploring the hidden gems of tourist destinations with the Travel Gem Explorer application!
