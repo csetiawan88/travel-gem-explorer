@@ -1,4 +1,6 @@
+// Comments
 const { destinationComment } = require('../models');
+
 
 const commentData = [
   {

@@ -1,3 +1,4 @@
+// Seeds JS
 const seedDestination = require('./destination-seed');
 const seedUser = require('./user-seed');
 const seedComments = require('./comment-seeds');

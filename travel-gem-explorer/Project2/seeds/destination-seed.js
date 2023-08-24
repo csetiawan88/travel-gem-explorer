@@ -1,3 +1,4 @@
+// Destination
 const { Destination } = require('../models');
 
 const destinationData = [
