@@ -2,6 +2,10 @@
 
 Welcome to the Travel Gem Explorer, a web application that allows users to explore and learn about popular tourist destinations around NSW. Users can view destination details, leave comments, and engage in discussions about their favorite places to visit.
 
+## Getting Started
+
+To run the Travel Gem Explorer application please visit the following URL: 
+
 ## Features
 
 ### User Authentication
@@ -100,9 +104,6 @@ Handlebars.js templates render dynamic HTML for various pages, such as login, re
 - Database: MySQL, Sequelize (ORM)
 - Authentication: Passport.js
 
-## Getting Started
-
-To run the Travel Gem Explorer application please visit the following URL: 
 
 ## Contributing
 
