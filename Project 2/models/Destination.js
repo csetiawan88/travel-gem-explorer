@@ -15,7 +15,7 @@ Destination.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    image: {
+    image_source: {
       type: DataTypes.STRING,
     },
     description: {
