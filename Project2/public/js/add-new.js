@@ -1,4 +1,8 @@
-    document.getElementById('showAddDestination').addEventListener('click', function() {
-        const container = document.getElementById('addDestinationContainer');
-        container.style.display = container.style.display === 'none' ? 'block' : 'none';
+    document.getElementById('addNewButton').addEventListener('click', () => {
+        $('#addNewModal').modal('show');
     });
+
+    document.querySelector('#addNewModal form').addEventListener('submit', () => {
+        $('#addNewModal').modal('hide');
+    });
+
