@@ -1,0 +1,45 @@
+  .header {
+    background-image: url('../images/header-image.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 70vh;
+  }
+
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+
+  .footer {
+    padding: 20px;
+    background-color: rgb(138, 152, 117);
+    opacity: 60%;
+    color: white;
+    text-align: center;
+    margin-top: auto;
+  }
+
+  .social-icon {
+    font-size: 24px;
+    color:white;
+}
+  
+  #about-us {
+    margin-bottom: 0;
+  }
+
+  #destination-cards {
+    margin-bottom: 50px;
+  }
+
+  #button {
+    background-color: rgb(138, 152, 117);
+    opacity: 70%;
+    color:white;
+    border:none;
+  }
