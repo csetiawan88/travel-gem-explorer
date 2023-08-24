@@ -1,15 +1,59 @@
+<a class="nav-link active" href="/destination/{{id}}"></a>
+
 <div class="container mt-5" id="destination-cards">
   <h4>Where to Go</h4>
   <div class="row">
-    {{#each cards}}
-    <div class="col-md-6 mb-4">
+    {{!-- {{#each cards}} --}}
+    <div class="col-md-8 mb-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">{{title}}</h5>
-          <p class="card-text">{{description}}</p>
+
+          <h5 class="card-title">Manly Scenic Walkway</h5>
+          <img src="https://www.nationalparks.nsw.gov.au/-/media/npws/images/parks/sydney-harbour-national-park/manly-scenic-walk/manly-scenic-walkway-01.jpg" alt="Destination" style="border: 5px inset black;">
+          <p class="card-text">Manly NSW</p>
+          <p class="card-text">Also known as the Spit Bridge to Manly Walk, Manly Scenic Walkway is among Sydney best walking tracks.</p>
+
+          {{!-- <h5 class="card-title">{{name}}</h5>
+          <img src="{{image_source}}" alt="Destination" style="border: 5px inset black;">
+          <p class="card-text">{{location}}</p>
+          <p class="card-text">{{description}}</p> --}}
         </div>
       </div>
+
+      <div class="card">
+        <div class="card-body">
+
+          <h5 class="card-title">Jenolan Caves</h5>
+          <img src="https://www.jenolancaves.org.au/images/sendbinary.asp?path=imagesDB/wysiwyg/grandtour.jpg&maxwidth=1185&maxheight=583" alt="Destination" style="border: 5px inset black;">
+          <p class="card-text">Blue Mountains NSW</p>
+          <p class="card-text">Jenolan Caves are the largest, most spectacular and most famous caves in Australia. Explore the world oldest caves - one of the most outstanding cave systems in the world.</p>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+
+          <h5 class="card-title">CSIRO Parkes Observatory</h5>
+          <img src="https://www.parkes.atnf.csiro.au/images/PA8685_flip_sml.jpg" alt="Destination" style="border: 5px inset black;">
+          <p class="card-text">Parkes NSW</p>
+          <p class="card-text">Parkes Observatory, just outside the central-west NSW town of Parkes, hosts Murriyang, the 64-metre Parkes radio telescope, one of the telescopes comprising CSIRO’s Australia Telescope National Facility.</p>
+
+        </div>
+      </div>
+
+            <div class="card">
+        <div class="card-body">
+
+          <h5 class="card-title">Wendy Whiteley Secret Garden</h5>
+          <img src="https://www.wendyssecretgarden.org.au/wp-content/uploads/2017/01/wendys-garden-overview-bridge-large.jpg" alt="Destination" style="border: 5px inset black;">
+          <p class="card-text">North Sydney NSW</p>
+          <p class="card-text">If you asked around, you would find that many people have heard of Wendy Whiteley’s Secret Garden, and some would have already been there and connected with it. It is not really a secret. It is actually one of the worst kept secrets in Sydney</p>
+
+        </div>
+      </div>
+
     </div>
-    {{/each}}
+    {{!-- {{/each}} --}}
   </div>
 </div>
