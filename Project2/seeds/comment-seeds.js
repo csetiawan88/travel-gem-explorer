@@ -4,23 +4,23 @@ const { destinationComment } = require('../models');
 
 const commentData = [
   {
-    user_id: 1,
-    map_id: 1,
+    userId: 1,
+    destinationId: 1,
     comment: "Fantastic!"
   },
   {
-    user_id: 2,
-    map_id: 2,
+    userId: 2,
+    destinationId: 2,
     comment: "This is great news!"
   },
   {
-    user_id: 3,
-    map_id: 3,
+    userId: 3,
+    destinationId: 3,
     comment: "Amazing work!"
   },
   {
-    user_id: 4,
-    map_id: 4,
+    userId: 4,
+    destinationId: 4,
     comment: "Keep up the good work!"
   },
 ]
