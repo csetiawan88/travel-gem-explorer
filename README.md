@@ -1,81 +1,117 @@
-# Application Idea: Travel Gem Explorer
+# Tourist Destination Showcase
 
-## Description:
+Welcome to the Tourist Destination Showcase, a web application that allows users to explore and learn about popular tourist destinations around NSW. Users can view destination details, leave comments, and engage in discussions about their favorite places to visit.
 
-Build a web application where users can explore and learn about popular tourist destinations around NSW. Users can view destination descriptions, leave comments, and engage in discussions about the places they are interested in visiting. Users can also add their own destinations
+## Features
 
-# Features:
+### User Authentication
 
-<li> User Authentication:
-User registration and login functionality using passport.js for authentication.
-Secure storage of user data.
-<li>Destination Showcase:
-Display a list of popular tourist destinations with images, titles, and brief descriptions.
-Allow users to click on a destination to view its full details.
-<li>Destination Details:
-Show detailed information about a selected destination, including description, location, opening hours, contact info, attractions, and recommended activities.
-<li>Commenting:
-Enable users to leave comments on each destination's page.
-Display comments under each destination for users to read and engage in discussions.
-<li>User Profile and Activity:
-Allow users to view their profiles and see their recent commenting activity.
-Display links to destinations for which the user has left comments.
-<li>Database Interaction:
-Use Sequelize to define and interact with database models (e.g., User, Destination, Comment).
-Set up associations between users, destinations, and comments.
-<li>Views and Templating:
-Use Handlebars.js templates to render dynamic HTML for login, registration, destination list, destination details, and user profile.
-<li>Technology Stack:
-Backend: Node.js, Express.js
-Frontend: HTML, CSS, Handlebars.js (templating), JavaScript
-Database: MySQL, Sequelize (ORM)
-Authentication: Passport.js
-<li>MVC Structure:
-Models: Define Sequelize models for User, Destination, and Comment.
-Views: Use Handlebars.js templates to render UI.
-Controllers: Implement controllers for user authentication, destination showcase, commenting, and interactions with the database.
+Register and log in using passport.js for secure authentication. User data is stored securely.
 
-## User Story:
+### Destination Showcase
 
-As a travel enthusiast, I want a platform where I can explore popular tourist destinations and connect with other travelers who share similar interests. I need an application that provides detailed information about these destinations, allowing me to read comments from other users and engage in discussions about travel experiences. Having a personalized profile where I can keep track of the destinations I've commented on would enhance my engagement with the platform.
-This user story highlights the platform's focus on providing users with insights into popular tourist destinations and fostering interactions among travelers. Users can learn about destinations, share their thoughts, and exchange valuable travel tips with others who are passionate about exploring NSW.
+Browse a list of popular tourist destinations with images and brief descriptions.
 
-# TASKS
+### Destination Details
 
-<li>  Set Up GitHub:
-<li> Create a new repository on GitHub for your project.
-<li> Clone the repository to your local machine using
-<li> Set Up Basic MVC Structure:
-<li> Create the main project directory and navigate into it.
-<li> Set up separate folders for your MVC components: models, views, controllers, public (for CSS, images, etc.).
-<li> Create a main entry file (e.g., app.js or server.js) to start your application.
-<li> Add Views:
-Inside the views folder, create Handlebars.js templates for different pages (e.g., index.hbs, destination.hbs, profile.hbs).
-Set up the base layout template that other templates will extend.
-<li> Add Models:
-In the models folder, define your Sequelize models for User, Destination, and Comment.
-Specify model attributes, associations, and validation rules.
-<li> Add Seed Data:
-Create a separate file (e.g., seed.js) to populate your database with initial data.
-<li> Use Sequelize queries to create sample users, destinations, and comments.
-<li> Set Up Controllers:
-Inside the controllers folder, create individual files for each controller (e.g., userController.js, destinationController.js, commentController.js).
-Define functions to handle different routes and actions in each controller.
-<li> Implement Routes:
-In each controller file, import the required models and set up routes using Express.js.
-Define route handlers to render appropriate views, retrieve data from the database, and interact with models.
-<li> Integrate Views with Controllers:
-Inside the controller route handlers, use res.render() to render the appropriate Handlebars.js view.
-Pass data from the database to the views for dynamic content.
-<li> Start Server:
-In your main entry file (app.js or server.js), import necessary packages (Express, Sequelize, Passport, etc.).
-Configure middleware (body parser, sessions, Passport).
-Set up routes by importing and using your controller functions.
-Start the server using app.listen().
-<li> Testing:
-Test your application locally to ensure that views are rendering correctly and database operations are working as expected.
-Check for any errors or issues and fix them before proceeding.
-<li> Commit and Push to GitHub:
-Add your changes using git add ..
-Commit the changes with a meaningful message using git commit -m "Initial setup and basic structure".
-Push the changes to GitHub using git push origin master.
+Get comprehensive information about a selected destination, including description, location, opening hours, contact info, attractions, and recommended activities.
+
+### Commenting
+
+Leave comments on destination pages and engage in discussions with other users.
+
+### User Profile and Activity
+
+View your profile and recent commenting activity. Access links to destinations for which you have left comments.
+
+### Database Interaction
+
+Sequelize is used for defining and interacting with database models (User, Destination, Comment). Associations between users, destinations, and comments are established.
+
+### Views and Templating
+
+Handlebars.js templates render dynamic HTML for various pages, such as login, registration, destination list, destination details, and user profile.
+
+## User Stories
+
+1. **Exploring Destinations:**
+   As a travel enthusiast, I want to explore popular tourist destinations to plan my next trip.
+   
+   - I can view a list of popular tourist destinations on the homepage.
+   - Each destination card includes an image, title, and brief description.
+
+2. **Detailed Information:**
+   As a user, I want to learn more about a specific destination.
+
+   - I can click on a destination card to view its detailed information.
+   - The destination details page includes a description, location, opening hours, contact information, attractions, and recommended activities.
+
+3. **Sharing Experiences:**
+   As a user, I want to leave comments on destinations to share my experiences.
+
+   - On the destination details page, I can leave a comment in the provided text box.
+   - After submitting a comment, it is displayed along with other comments.
+   - Comments are displayed in chronological order, with the newest comments at the top.
+
+4. **Personalized Profile:**
+   As a user, I want to have a personalized profile.
+
+   - I can sign up for an account with my email and password.
+   - I can log in using my registered email and password.
+   - After logging in, I can view my profile information.
+
+5. **Tracking Comments:**
+   As a user, I want to keep track of the destinations I've commented on.
+
+   - On my profile page, I can see a list of destinations for which I've left comments.
+   - Each destination in the list is linked to its details page.
+
+## Acceptance Criteria
+
+1. **Homepage and Destination List:**
+   - A list of destinations is displayed on the homepage.
+   - Each destination card includes an image, title, and brief description.
+   - Clicking on a card navigates to the destination's details page.
+
+2. **Destination Details Page:**
+   - Detailed information about the destination is displayed, including description, location, opening hours, contact information, attractions, and recommended activities.
+   - A comment section allows users to leave comments.
+   - Comments are displayed in chronological order, with the newest comments at the top.
+
+3. **Commenting:**
+   - Users can write and submit comments on destination details pages.
+   - Submitted comments are displayed with the username, timestamp, and content.
+   - Users can only delete their own comments.
+
+4. **User Authentication:**
+   - Users can register an account with a valid email and password.
+   - Users can log in using their registered email and password.
+   - Users can log out of their account.
+
+5. **User Profile:**
+   - Users can view their profile page after logging in.
+   - The profile page displays the user's email and a list of destinations they've commented on.
+   - Destinations in the list are linked to their respective details pages.
+
+## Technology Stack
+
+- Backend: Node.js, Express.js
+- Frontend: HTML, CSS, Handlebars.js (templating), JavaScript
+- Database: MySQL, Sequelize (ORM)
+- Authentication: Passport.js
+
+## Getting Started
+
+To run the Tourist Destination Showcase application please visit the following URL: 
+
+## Contributing
+
+Contributions are welcome! If you find a bug or have an enhancement in mind, please open an issue or create a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Enjoy exploring the hidden gems of tourist destinations with the Tourist Destination Showcase application!
