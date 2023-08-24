@@ -4,7 +4,7 @@
             <div class="col-md-8 text-right">
                 <h1 class="display-4">travel gem explorer</h1>
                 <br>
-                <p class="lead text-black">Your treasure map to uncovering concealed marvels within renowned destinations. Embrace the extraordinary as you discover the heart and soul of your chosen destination, one hidden gem at a time.</p>
+                <p class="lead text-black">Your treasure map to uncovering concealed marvels within renowned destinations. Embrace the extraordinary as you discover the heart and soul of your destination, <br> one hidden gem at a time.</p>
             </div>
         </div>
     </div>
@@ -12,6 +12,15 @@
 
 
 {{> whereToGo}}
+
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-end">
+            <button class="btn" id="button" data-toggle="modal" data-target="#addNewModal">Add New Destination</button>
+            {{> add-new}}
+        </div>
+    </div>
+</div>
 
 <div class="jumbotron jumbotron-fluid" id="about-us">
     <div class="container">
