@@ -1,8 +1,25 @@
-    document.getElementById('addNewButton').addEventListener('click', () => {
-        $('#addNewModal').modal('show');
+document.addEventListener('DOMContentLoaded', () => {
+    const addNewButton = document.getElementById('addNewButton');
+    const addNewModal = document.getElementById('addNewModal');
+    const addNewForm = document.querySelector('#addNewModal form');
+ 
+    addNewButton.addEventListener('click', () => {
+      $('#addNewModal').modal('show');
     });
-
-    document.querySelector('#addNewModal form').addEventListener('submit', () => {
-        $('#addNewModal').modal('hide');
+ 
+    addNewForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+   
+      const formData = new FormData(event.target);
+      const response = await fetch('/create-destination', {
+        method: 'POST',
+        body: formData
+      });
+   
+      if (response.ok) {
+        const newDestinationId = await response.text(); // Assuming the response contains the new destination's ID
+        window.location.href = `/destination/${newDestinationId}`;
+      }
     });
-
+  });
+ 
