@@ -17,16 +17,20 @@
       {{#if loggedIn}}
         <button id="logout" class="btn" id="button">Log Out</button>
       {{else}}
-        <button class="btn" id="button" data-toggle="modal" data-target="#loginModal" data-action="login">Log In</button>
+        <button class="btn button" data-toggle="modal" data-target="#loginModal" data-action="login">Log In</button>
         {{> login-form}}
-        <button class="btn ml-3" id="button" data-toggle="modal" data-target="#signupModal">Sign Up</button>
+        <button class="btn ml-3 button" data-toggle="modal" data-target="#signupModal">Sign Up</button>
         {{> signup-form}}
       {{/if}}
     </div>
   </div>
 </nav>
 
-{{{ body }}}
+  <div class="content">
+        {{{ body }}}
+    </div>
+
+
 
 <footer class="footer py-3">
   <div class="container text-center">
