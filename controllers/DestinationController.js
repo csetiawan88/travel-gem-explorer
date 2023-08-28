@@ -1,27 +1,35 @@
-const { Destination } = require('../models');
+const router = require('express').Router();
+const { Destination, User } = require('../models');
+const withAuth = require('../utils/auth');
 
-exports.getDestination = (req, res) => {
-    Destination.findAll()
-    .then(destinyData => res.json(destinyData))
-    .catch(err => {
-        res.status(500).json(err);
-    });
-};
+router.get('/', async (req, res) => {
+  try {
+    const destinationData = Destination.findAll();
+
+    const destinations = (await destinationData).map((project) =>
+      project.get({ plain: true })
+    );
+
+    res.render('homepage', { destinations, logged_in: req.session.logged_in });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 exports.getDestinationById = (req, res) => {
-    Destination.findOne({
-      where: {
-        id: req.params.id,
-      },
-    })
-    .then (destinyData => {
+  Destination.findOne({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((destinyData) => {
       if (!destinyData) {
-        res.status(404).json({ message: 'No Destination found with this id'});
+        res.status(404).json({ message: 'No Destination found with this id' });
         return;
       }
       res.json(destinyData);
     })
-    .catch (err => {
+    .catch((err) => {
       res.status(500).json(err);
     });
 };
@@ -32,16 +40,18 @@ exports.getDestinationByUserId = (req, res) => {
       userId: req.params.id,
     },
   })
-  .then (destinyData => {
-    if (!destinyData) {
-      res.status(404).json({ message: 'No Destination found with this user id'});
-      return;
-    }
-    res.json(destinyData);
-  })
-  .catch (err => {
-    res.status(500).json(err);
-  });
+    .then((destinyData) => {
+      if (!destinyData) {
+        res
+          .status(404)
+          .json({ message: 'No Destination found with this user id' });
+        return;
+      }
+      res.json(destinyData);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
 };
 
 exports.createDestination = (req, res) => {
@@ -51,33 +61,35 @@ exports.createDestination = (req, res) => {
     description: req.body.description,
     userId: req.body.userId,
   })
-  .then (destinyData => res.json(destinyData))
-  .catch (err => {
-    res.status(500).json(err);
-  });
-}
+    .then((destinyData) => res.json(destinyData))
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+};
 
 exports.updateDestination = (req, res) => {
-  Destination.update({
-    name: req.body.name,
-    image_source: req.body.image_url,
-    description: req.body.description,
-    userId: req.body.userId,
-  },
-  {
-    where: {
-      id: req.params.id,
+  Destination.update(
+    {
+      name: req.body.name,
+      image_source: req.body.image_url,
+      description: req.body.description,
+      userId: req.body.userId,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
     }
-  })
-  .then (destinyData => {
-    if (!destinyData) {
-      res.status(404).json({massage: 'No Category found with this id'});
-      return;
-    }
-    res.json(destinyData);
-  })
-  .catch (err => {
+  )
+    .then((destinyData) => {
+      if (!destinyData) {
+        res.status(404).json({ massage: 'No Category found with this id' });
+        return;
+      }
+      res.json(destinyData);
+    })
+    .catch((err) => {
       // console.log(err);
-    res.status(500).json(err);
-  }); 
+      res.status(500).json(err);
+    });
 };
