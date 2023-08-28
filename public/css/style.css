@@ -75,6 +75,10 @@
   padding: 20px;
 }
 
+.card{
+  margin: 1.5rem;
+}
+
 #about-us {
   margin-bottom: 0;
   margin-left: calc(-50vw + 50%);
@@ -89,8 +93,9 @@
 
 #destination-cards h1 {
   font-size: 5rem; 
-  padding:4rem 0 2rem 0;
-  font-style:italic;
+  padding:5rem 0 3rem 0;
+  font-weight:bold;
+  /* font-style:italic; */
 }
 
 
