@@ -20,7 +20,7 @@ Destination.init(
       allowNull: false,
     },
     image_source: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     description: {
       type: DataTypes.TEXT,

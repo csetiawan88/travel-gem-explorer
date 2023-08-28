@@ -5,7 +5,7 @@ const { Destination } = require('../models');
 const destinationData = [
   {
     name: 'Paddington Reservoir Gardens',
-    location: 'Paddington NSW<',
+    location: 'Paddington NSW',
     description:
       'Paddington Reservoir Gardens, in Sydney’s east, is a heritage-listed reservoir that supplied the city’s water from 1878 until 1899. It became a service station with a park overhead, but today its chambers have been opened up to show its bones. Some worldly types say it now reminds them of Rome’s ancient Baths of Caracalla. It’s a surprisingly peaceful haven given its location on busy Oxford Street.',
     image_source:
