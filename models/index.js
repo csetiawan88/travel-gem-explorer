@@ -23,3 +23,5 @@ Destination.belongsTo(User, {
 Comment.hasOne(Destination, {
   foreignKey: 'destinationId',
 });
+
+module.exports = { User, Destination, Comment };
