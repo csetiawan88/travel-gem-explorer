@@ -87,6 +87,13 @@
   margin-bottom: 50px;
 }
 
+#destination-cards h1 {
+  font-size: 5rem; 
+  padding:4rem 0 2rem 0;
+  font-style:italic;
+}
+
+
 .button {
   background-color: rgb(138, 152, 117);
   opacity: 70%;
