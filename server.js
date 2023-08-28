@@ -72,9 +72,30 @@ app.get('/add-new', (req, res) => {
   });
 });
 
+app.get('/destination/:id', async (req, res) => {
+  try {
+    // Fetch destination data using the :id parameter
+    const destinationId = req.params.id;
+    // Fetch destination data from the database using the ID
+
+    // For now, let's assume destinationData contains the necessary data
+    const destinationData = {
+      name: 'Destination Name',
+      location: 'Destination Location',
+      description: 'Destination Description',
+      // ... other data
+    };
+
+    res.render('destination', destinationData);
+  } catch (error) {
+    console.error('Error fetching destination data:', error);
+    res.status(500).send('An error occurred while fetching destination data.');
+  }
+});
+
+// Start the server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
 
-// Start the server
 

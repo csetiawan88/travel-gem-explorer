@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
    
       if (response.ok) {
-        const newDestinationId = await response.text(); // Assuming the response contains the new destination's ID
+        const newDestinationId = await response.text(); 
         window.location.href = `/destination/${newDestinationId}`;
       }
     });
