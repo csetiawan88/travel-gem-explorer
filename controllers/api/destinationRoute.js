@@ -44,18 +44,7 @@ router.get('/userDestination/:userId', async (req, res) => {
   }
 });
 
-router.post('/create-destination', withAuth, async (req, res) => {
-  try {
-    const newDestination = await Destination.create({
-      ...req.body,
-      userId: req.session.userId,
-    });
 
-    res.status(200).json(newDestination);
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
 
 router.put('/:id', withAuth, async (req, res) => {
   try {
@@ -90,6 +79,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     }
 
     res.status(200).json(destinationData);
+
   } catch (err) {
     res.status(500).json(err);
   }

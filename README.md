@@ -4,7 +4,7 @@ Welcome to the Travel Gem Explorer, a web application that allows users to explo
 
 ## Getting Started
 
-To run the Travel Gem Explorer application please visit the following URL: 
+To run the Travel Gem Explorer application please visit the following URL: https://travelgem-explorer-6412c66d7631.herokuapp.com/
 
 ## Features
 
@@ -18,7 +18,7 @@ Browse a list of popular tourist destinations with images and brief descriptions
 
 ### Destination Details
 
-Get comprehensive information about a selected destination, including description, location, opening hours, contact info, attractions, and recommended activities.
+Get comprehensive information about a selected destination, including description, location, attractions, and recommended activities.
 
 ### Commenting
 
@@ -104,6 +104,16 @@ Handlebars.js templates render dynamic HTML for various pages, such as login, re
 - Database: MySQL, Sequelize (ORM)
 - Authentication: Passport.js
 
+## Future development
+While the Travel Gem Explorer already offers a range of exciting features for users to explore and engage with tourist destinations, there are several avenues for future development and enhancements that can further enrich the user experience. Some potential areas for improvement and expansion include:
+1. **Interactive Maps:**
+Integrate interactive maps on destination details pages to provide users with a visual representation of the location. This can help users better understand the proximity of attractions and landmarks within the destination.
+2. **Advanced Search and Filtering:**
+Enhance the search functionality to allow users to filter destinations based on specific criteria, such as type of attraction (beach, mountain, historical), accessibility, and user ratings.
+3. **Accessibility Features:**
+Ensure that the application adheres to accessibility standards, making it usable for individuals with disabilities. Implement features such as screen reader compatibility and keyboard navigation to ensure inclusivity.
+4. **Integration with Travel Services:**
+Explore integrations with travel booking services to allow users to seamlessly transition from exploring destinations to planning and booking their trips.
 
 ## Contributing
 
