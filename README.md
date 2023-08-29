@@ -4,7 +4,7 @@ Welcome to the Travel Gem Explorer, a web application that allows users to explo
 
 ## Getting Started
 
-To run the Travel Gem Explorer application please visit the following URL: 
+To run the Travel Gem Explorer application please visit the following URL: https://travelgem-explorer-6412c66d7631.herokuapp.com/
 
 ## Features
 
