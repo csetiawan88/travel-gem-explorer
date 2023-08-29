@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Destination } = require('../../models');
+const { Destination, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -81,6 +81,29 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(200).json(destinationData);
 
   } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/:id', async (req, res) => {
+  try {
+    console.log('Request Params:', req.params);
+    const destinationData = await Destination.findByPk(req.params.id, {
+      include: [
+        {
+          model: Comment,
+          attributes: ['comment', 'userId'],
+        },
+      ],
+    });
+
+    const destination = destinationData.get({ plain: true });
+    res.render('destination', {
+      ...destination,
+      loggedIn: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log('err', err);
     res.status(500).json(err);
   }
 });

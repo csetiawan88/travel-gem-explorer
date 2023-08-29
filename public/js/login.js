@@ -16,10 +16,8 @@ const loginFormHandler = async (event) => {
       },
     });
 
-    console.log('Response:', response);
-
     if (response.ok) {
-      closeModal();
+      location.reload();
     } else {
       alert('Failed to log in.');
     }
@@ -31,13 +29,18 @@ const signupFormHandler = async (event) => {
 
   const email = document.querySelector('#signup-email').value.trim();
   const password = document.querySelector('#signup-password').value.trim();
+  const name = document.querySelector('#signup-username').value.trim();
 
-  if (email && password) {
+  console.log('Form Data:', { name, email, password });
+
+  if (name && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
+
+    console.log('Response:', response);
 
     if (response.ok) {
       document.location.replace('/');
@@ -46,13 +49,6 @@ const signupFormHandler = async (event) => {
     }
   }
 };
-
-function closeModal() {
-  const loginModal = document.querySelector('#loginModal');
-  const modalInstance = new bootstrap.Modal(loginModal);
-
-  modalInstance.hide();
-}
 
 document
   .querySelector('.login-form')

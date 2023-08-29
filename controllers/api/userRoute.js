@@ -4,25 +4,25 @@ const { User } = require('../../models');
 router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
-
+    console.log('Response:', userData);
     req.session.save(() => {
       req.session.user_id = userData.id;
-      req.session.logged_in = true;
+      loggedIn: req.session.logged_in = true;
 
       res.status(200).json(userData);
     });
   } catch (err) {
+    console.log('error', err);
     res.status(400).json(err);
   }
 });
 
 router.post('/login', async (req, res) => {
   try {
-    console.log('Received login request:', req.body); // Log the received request bod
-
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
+      console.log('User not found');
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
