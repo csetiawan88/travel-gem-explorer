@@ -10,6 +10,8 @@ const PORT = process.env.PORT || 3001;
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const { Comment, Destination, User } = require('./models/index');
+
 
 // initialize session
 const sess = {
@@ -46,21 +48,32 @@ app.post('/signup', (req, res) => {
   // Handle signup logic here
 });
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   const pageTitle = 'Home';
-  let modalTitle = 'Login or Sign Up'; // Default modal title
 
-  // Check if the request contains an action parameter (login or signup)
-  if (req.query.action) {
-    if (req.query.action === 'login') {
-      modalTitle = 'Login';
-    } else if (req.query.action === 'signup') {
-      modalTitle = 'Sign Up';
+  try {
+    // Fetch all destinations from the database
+    const destinations = await Destination.findAll();
+
+    // Check if the request contains an action parameter (login or signup)
+    let modalTitle = 'Login or Sign Up'; // Default modal title
+    if (req.query.action) {
+      if (req.query.action === 'login') {
+        modalTitle = 'Login';
+      } else if (req.query.action === 'signup') {
+        modalTitle = 'Sign Up';
+      }
     }
-  }
 
-  res.render('homepage', { pageTitle, modalTitle });
+    console.log(destinations);
+    res.render('homepage', { pageTitle, modalTitle, destinations }); // Pass destinations here
+  } catch (error) {
+    console.error('Error fetching destinations:', error);
+    res.status(500).send('An error occurred while fetching destinations.');
+  }
 });
+
+
 
 app.get('/add-new', (req, res) => {
   const pageTitle = 'Add New Destination';
@@ -74,24 +87,31 @@ app.get('/add-new', (req, res) => {
 
 app.get('/destination/:id', async (req, res) => {
   try {
-    // Fetch destination data using the :id parameter
     const destinationId = req.params.id;
-    // Fetch destination data from the database using the ID
 
-    // For now, let's assume destinationData contains the necessary data
-    const destinationData = {
-      name: 'Destination Name',
-      location: 'Destination Location',
-      description: 'Destination Description',
-      // ... other data
-    };
+    // Fetch destination data from the database based on the ID
+    const destinationData = await Destination.findByPk(destinationId);
 
-    res.render('destination', destinationData);
+    if (!destinationData) {
+      return res.status(404).send('Destination not found');
+    }
+
+    const latestDestinations = await Destination.findAll({
+      limit: 4,
+      order: [['id', 'DESC']], // Sort by id in descending order
+    });
+
+    // Render the destination.handlebars template and pass in the data
+    res.render('destination', {
+      ...destinationData.dataValues,
+      latestDestinations,
+    });
   } catch (error) {
     console.error('Error fetching destination data:', error);
     res.status(500).send('An error occurred while fetching destination data.');
   }
 });
+
 
 // Start the server
 sequelize.sync({ force: false }).then(() => {

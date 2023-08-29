@@ -1,0 +1,20 @@
+<div class="container mt-5" id="destination-cards">
+  <h1>explore</h1>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {{#each destinations}}
+      <div class="col">
+        <div class="card">
+          <div class="card-img-wrapper">
+            <img src="{{image_source}}" class="card-img-top" alt="{{name}}">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">
+              <a href="/destination/{{id}}" class="card-link">{{name}}</a>
+            </h5>
+            <p class="card-text">{{location}}</p>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
