@@ -56,10 +56,10 @@
 
 .title {
   padding: 3rem 0;
-  font-size: 4.5rem;
+  font-size: 4rem;
   font-weight: bold;
   text-transform: lowercase;
-  white-space: nowrap;
+  white-space:nowrap;
 }
 
 .image-container {
@@ -98,7 +98,7 @@
 }
 
 .sidebar {
-  padding: 20px;
+  margin-top: 3rem;
 }
 
 .about-me {
@@ -179,7 +179,7 @@
   }
   .title {
     font-size: 3.5rem;
-    white-space: nowrap;
+    white-space:normal;
     text-align: center;
   }
   .title-overlay {
@@ -187,7 +187,7 @@
     position: relative;
     top: 0;
     left: 0;
-    white-space: nowrap;
+    white-space:normal;
     padding: 0;
   }
   .image-container {
@@ -214,7 +214,7 @@
     position: relative;
     top: 0;
     left: 0;
-    white-space: nowrap;
+    white-space:normal;
     padding: 0;
   }
   .image-container {
