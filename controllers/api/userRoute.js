@@ -18,11 +18,10 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    console.log('Received login request:', req.body); // Log the received request bod
-
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
+      console.log('User not found');
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });

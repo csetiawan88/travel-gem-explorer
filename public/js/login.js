@@ -19,7 +19,7 @@ const loginFormHandler = async (event) => {
     console.log('Response:', response);
 
     if (response.ok) {
-      closeModal();
+      document.location.replace('/');
     } else {
       alert('Failed to log in.');
     }
@@ -46,13 +46,6 @@ const signupFormHandler = async (event) => {
     }
   }
 };
-
-function closeModal() {
-  const loginModal = document.querySelector('#loginModal');
-  const modalInstance = new bootstrap.Modal(loginModal);
-
-  modalInstance.hide();
-}
 
 document
   .querySelector('.login-form')

@@ -31,12 +31,14 @@ const sess = {
 
 app.use(session(sess));
 
-app.use('/public', express.static(path.join(__dirname, 'public')));
-
 // Configure Handlebars as the view engine
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
