@@ -11,6 +11,7 @@ const routes = require('./controllers');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const { Comment, Destination, User } = require('./models/index');
 
 // initialize session
 const sess = {
@@ -30,7 +31,7 @@ const sess = {
 
 app.use(session(sess));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Configure Handlebars as the view engine
 app.engine('handlebars', exphbs());
