@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Destination } = require('../../models');
+const { Destination, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/create-destination', withAuth, async (req, res) => {
@@ -37,6 +37,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
+    console.log('Request Params:', req.params);
     const destinationData = await Destination.findByPk(req.params.id, {
       include: [
         {
@@ -47,11 +48,12 @@ router.get('/:id', async (req, res) => {
     });
 
     const destination = destinationData.get({ plain: true });
-    res.render('destinations', {
+    res.render('destination', {
       ...destination,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
+    console.log('err', err);
     res.status(500).json(err);
   }
 });

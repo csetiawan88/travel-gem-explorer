@@ -20,7 +20,12 @@ Destination.belongsTo(User, {
   foreignKey: 'userId',
 });
 
-Comment.hasOne(Destination, {
+Destination.hasMany(Comment, {
+  foreignKey: 'destinationId',
+  onDelete: 'CASCADE',
+});
+
+Comment.belongsTo(Destination, {
   foreignKey: 'destinationId',
 });
 

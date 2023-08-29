@@ -16,25 +16,4 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/destination/:id', async (req, res) => {
-  try {
-    const destinationData = await Destination.findByPk(req.params.id, {
-      include: [
-        {
-          model: Comment,
-          attributes: ['comment', 'userId'],
-        },
-      ],
-    });
-
-    const destination = destinationData.get({ plain: true });
-    res.render('destinations', {
-      ...destination,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 module.exports = router;
