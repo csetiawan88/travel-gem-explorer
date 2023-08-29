@@ -16,13 +16,7 @@
           </div>
           
           <div class="comments-container mt-4 p-3">
-            <div class="comment">
-              <p><strong>User1</strong>: This place was amazing!</p>
-            </div>
-            <div class="comment">
-              <p><strong>User2</strong>: I agree, it's a great zoo.</p>
-            </div>
-            {{#each comments}}
+           {{#each comments}}
             <div class="comment">
               <p><strong>{{this.user}}</strong>: {{this.text}}</p>
             </div>
@@ -44,7 +38,7 @@
           </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-4 sidebar">
           <div class="side-box text-center">
             <h4>explore more</h4>
             <br>
