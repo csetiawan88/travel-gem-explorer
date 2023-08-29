@@ -16,8 +16,6 @@ const loginFormHandler = async (event) => {
       },
     });
 
-    console.log('Response:', response);
-
     if (response.ok) {
       document.location.replace('/');
     } else {
@@ -31,13 +29,18 @@ const signupFormHandler = async (event) => {
 
   const email = document.querySelector('#signup-email').value.trim();
   const password = document.querySelector('#signup-password').value.trim();
+  const name = document.querySelector('#signup-username').value.trim();
 
-  if (email && password) {
+  console.log('Form Data:', { name, email, password });
+
+  if (name && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
+
+    console.log('Response:', response);
 
     if (response.ok) {
       document.location.replace('/');
