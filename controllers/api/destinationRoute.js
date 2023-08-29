@@ -12,22 +12,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
-  const destinationId = req.params.id;
-  try {
-    const destination = await Destination.findByPk(destinationId);
-
-    if (!destination) {
-      res.status(404).json({ message: 'Destination not found' });
-      return;
-    }
-
-    res.status(200).json(destination);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 router.get('/userDestination/:userId', async (req, res) => {
   const userId = req.params.userId;
 
@@ -44,8 +28,6 @@ router.get('/userDestination/:userId', async (req, res) => {
   }
 });
 
-
-
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const destinationId = req.params.id;
@@ -54,8 +36,8 @@ router.put('/:id', withAuth, async (req, res) => {
     if (!destinationToUpdate) {
       res.status(404).json({ message: 'Destination not found' });
       return;
-    } 
-    
+    }
+
     await destinationToUpdate.update(req.body);
 
     res.status(200).json(destinationToUpdate);
@@ -79,7 +61,6 @@ router.delete('/:id', withAuth, async (req, res) => {
     }
 
     res.status(200).json(destinationData);
-
   } catch (err) {
     res.status(500).json(err);
   }
