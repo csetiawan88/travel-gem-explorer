@@ -50,7 +50,7 @@ router.get('/:id', async (req, res) => {
     const destination = destinationData.get({ plain: true });
     res.render('destination', {
       ...destination,
-      logged_in: req.session.logged_in,
+      loggedIn: req.session.logged_in,
     });
   } catch (err) {
     console.log('err', err);
