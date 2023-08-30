@@ -28,7 +28,7 @@ const destinationData = [
       'https://www.sydney.com/sites/sydney/files/styles/gallery_no_thumb_large/public/2021-07/150578%20-%20View%20of%20Shark%20Island%20and%20Sydney%20Harbour%20from%20the%20Hermitage%20Foreshore%20Walking%20Track%20in%20Vaucluse%20-%20DNSW%20-%20sml_0.webp?itok=cVju-EJ_',
   },
   {
-    name: 'Wendy Whiteley’s Secret Garden',
+    name: 'Wendy Whiteley Secret Garden',
     location: 'North Sydney NSW',
     description:
       'If you asked around, you would find that many people have heard of Wendy Whiteley’s Secret Garden, and some would have already been there and connected with it. It is not really a secret. It is actually one of the worst kept secrets in Sydney',

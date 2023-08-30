@@ -1,33 +1,73 @@
-<div class="modal fade" id="addNewModal" tabindex="-1" role="dialog" aria-labelledby="addNewModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addNewModalLabel">Add New Destination</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/create-destination" method="POST">
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" id="title" name="title" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="location">Location</label> 
-                        <input type="text" id="location" name="location" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="image-url">Image</label>
-                        <input type="text" id="image-url" name="image-url" class="form-control" required placeholder="Image URL">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="btn button">Save</button>
-                </form>
-            </div>
+<div
+  class='modal fade'
+  id='addNewModal'
+  tabindex='-1'
+  role='dialog'
+  aria-labelledby='addNewModalLabel'
+  aria-hidden='true'
+>
+  <div class='modal-dialog' role='document'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title' id='addNewModalLabel'>Add New Destination</h5>
+        <button
+          type='button'
+          class='close'
+          data-dismiss='modal'
+          aria-label='Close'
+        >
+          <span aria-hidden='true'>&times;</span>
+        </button>
+      </div>
+      <div class='modal-body'>
+
+        <div>
+          <div class='form-group'>
+            <label for='name'>Title</label>
+            <input
+              type='text'
+              id='name'
+              name='name'
+              class='form-control'
+              required
+            />
+          </div>
+          <div class='form-group'>
+            <label for='location'>Location</label>
+            <input
+              type='text'
+              id='location'
+              name='location'
+              class='form-control'
+              required
+            />
+          </div>
+          <div class='form-group'>
+            <label for='image-url'>Image</label>
+            <input
+              type='text'
+              id='image-url'
+              name='image-url'
+              class='form-control'
+              required
+              placeholder='Image URL'
+            />
+          </div>
+          <div class='form-group'>
+            <label for='description'>Description</label>
+            <textarea
+              id='description'
+              name='description'
+              class='form-control'
+              rows='4'
+              required
+            ></textarea>
+          </div>
+          <button id='saveDestination' class='btn button'>Save</button>
         </div>
+
+      </div>
     </div>
+  </div>
 </div>
+<script src='./js/add-new.js'></script>

@@ -110,23 +110,8 @@
   margin-bottom: 1rem;
 }
 
-.card-deck {
-  display: flex;
-  flex-direction: column; /* Stack cards vertically */
-  gap: 1rem; /* Add some spacing between cards */
-}
 .card-link {
   color: rgb(138, 152, 117);
-}
-.card-image {
-  height: 200px; 
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-.card-body {
-  font-size: 15px;
-  padding: 5px;
 }
 
 .navbar {
@@ -214,20 +199,6 @@
   .side-box h4 {
     top: -25px;
   }
- 
-.sidebar-card {
-  width: 200px; 
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-.card-deck {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 10px; 
-}
 }
 
 @media (max-width: 576px) {
