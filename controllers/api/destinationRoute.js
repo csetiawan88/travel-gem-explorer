@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { Destination, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
+const { Op } = require('sequelize'); // Import Op as well if you are using it
+const sequelize = require('../../config/connection');
 
 router.get('/userDestination/:userId', async (req, res) => {
   const userId = req.params.userId;
@@ -67,14 +69,22 @@ router.get('/:id', async (req, res) => {
       return res.status(404).send('Destination not found');
     }
 
+    const currentDestinationId = destinationData.id;
+
     const latestDestinations = await Destination.findAll({
       attributes: ['id', 'image_source', 'name'],
+      where: {
+        id: {
+          [Op.not]: currentDestinationId
+        }
+      },
+      raw: true, 
       limit: 3,
-      order: [['id', 'DESC']], // Sort by id in descending order
+      order: [['id', 'DESC']],
     });
+   
 
     console.log('latestDestinations:', latestDestinations);
-
 
     // Render the destination.handlebars template and pass in the data
     res.render('destination', {
@@ -86,7 +96,6 @@ router.get('/:id', async (req, res) => {
     res.status(500).send('An error occurred while fetching destination data.');
   }
 });
-
 
 
 module.exports = router;
