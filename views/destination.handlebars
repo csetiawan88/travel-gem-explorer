@@ -1,45 +1,62 @@
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-md-6 d-flex align-items-center justify-content-center">
-      <div class="image-container">
-        <img src="{{ image_source }}" alt="{{ name }}" style="max-width: 100%; height: 100%; object-fit: cover;">
-      </div>
-    </div>
-    <div class="col-md-6 d-flex flex-column justify-content-between mb-5">
-      <div class="content-container">
-        <h1> {{ name }} </h1>
-        <br>
-        <h5> {{ location }} </h5>
-        <p> {{ description }} </p>
-      </div>
-
-<div class="comments-container mt-4">
-  <div class="comment">
-    <p><strong>{{comment.user}}</strong>: This place was amazing!</p>
-  </div>
-  <div class="comment">
-    <p><strong>{{comment.user}}</strong>: I agree, it's a great zoo.</p>
-  </div>
-   {{#each comments}}
-          <div class="comment">
-            <p><strong>{{../loggedInUser.username}}</strong>: {{this.text}}</p>
+  <div class="row justify-content-center">
+    <div class="col-lg-11 col-sm-12">
+      <div class="row">
+        <div class="col-lg-8 col-md-12">
+          <div class="title title-overlay">
+            <p>{{ name }}</p>
           </div>
-        {{/each}}
-</div>
-
-      
-      <div class="comment-container mt-4">
-        {{#if loggedIn}}
-          <form>
-            <div class="form-group">
-              <label for="comment">Add a Comment:</label>
-              <textarea class="form-control" id="comment" rows="3"></textarea>
+          <div class="image-container">
+            <img src="{{ image_source }}" alt="{{ name }}" style="max-width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="content-container">
+            <br>
+            <h5>{{ location }}</h5>
+            <p>{{ description }}</p>
+          </div>
+          
+          <div class="comments-container mt-4 p-3">
+           {{#each comments}}
+            <div class="comment">
+              <p><strong>{{this.user}}</strong>: {{this.text}}</p>
             </div>
-            <button type="submit" class="btn button">Submit Comment</button>
-          </form>
-        {{else}}
-          <p>You must be logged in to add a comment.</p>
-        {{/if}}
+            {{/each}}
+          </div>
+
+          <div class="comment-container mt-4 comment-form">
+            {{#if loggedIn}}
+            <form>
+              <div class="form-group">
+                <label for="comment">Add a Comment:</label>
+                <textarea class="form-control" id="comment" rows="3"></textarea>
+              </div>
+              <button type="submit" class="btn button">Submit Comment</button>
+            </form>
+            {{else}}
+            <p>You must be logged in to add a comment.</p>
+            {{/if}}
+          </div>
+        </div>
+
+        <div class="col-lg-4 sidebar">
+          <div class="side-box text-center">
+            <h4>explore more</h4>
+            <br>
+          </div>
+          <div class="destination-links">
+            <div class="card-deck">
+              {{#each latestDestinations}}
+              <div class="card mb-3">
+                <img src="{{this.image_source}}" class="card-img-top" alt="{{this.name}}">
+                <div class="card-body">
+                  <h5 class="card-title">{{this.name}}</h5>
+                  <p class="card-text">{{this.location}}</p>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

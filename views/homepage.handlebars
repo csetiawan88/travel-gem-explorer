@@ -2,16 +2,26 @@
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-md-8 text-right">
+                <br>
+                <br>
                 <h1 class="display-4">travel gem explorer</h1>
                 <br>
-                <p class="lead text-black">Your treasure map to uncovering concealed marvels within renowned destinations. Embrace the extraordinary as you discover the heart and soul of your destination, <br> one hidden gem at a time.</p>
+                <p class="lead text-white quote">"Seek the beauty in the unnoticed, the extraordinary in the familiar, and the magic in the mundane."</p>
             </div>
         </div>
     </div>
 </div>
 
-{{> whereToGo}}
+<div class="container mt-5" id="destination-cards">
+  <h1>explore</h1>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    {{#each destinations as |destination|}}
+    {{> where-to-go}}
+    {{/each}}
+  </div>
+</div>
 
+{{#if loggedIn}}
 <div class="container my-4">
     <div class="row">
         <div class="col-md-12 d-flex justify-content-end">
@@ -20,16 +30,21 @@
         </div>
     </div>
 </div>
+{{/if}}
 
 <div class="jumbotron jumbotron-fluid" id="about-us">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img src="/images/about-image.jpg" alt="About Us Image" class="img-fluid">
+                <img src="images/about-image.jpg" alt="About Us Image" class="img-fluid">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <br>
                 <h2>About Us</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                <br>
+                <p>
+                    We are travelers, adventurers, and seekers of hidden wonders. Through the Travel Gem Explorer, we invite you to transcend tourist trails and delve into the depths of renowned destinations. Beyond iconic landmarks, we discover concealed treasures and uncharted gems. With a passion for authenticity, we unveil the extraordinary in the familiar. Join us in uncovering the magic that transforms your journey into a revelation – one concealed marvel at a time.
+                </p>
             </div>
         </div>
     </div>

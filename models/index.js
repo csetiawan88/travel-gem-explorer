@@ -1,4 +1,4 @@
-const User = require('./user');
+const User = require('./User');
 const Destination = require('./Destination');
 const Comment = require('./Comment');
 
@@ -20,6 +20,13 @@ Destination.belongsTo(User, {
   foreignKey: 'userId',
 });
 
-Comment.hasOne(Destination, {
+Destination.hasMany(Comment, {
+  foreignKey: 'destinationId',
+  onDelete: 'CASCADE',
+});
+
+Comment.belongsTo(Destination, {
   foreignKey: 'destinationId',
 });
+
+module.exports = { User, Destination, Comment };

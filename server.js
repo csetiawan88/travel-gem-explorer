@@ -2,55 +2,48 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const hbs = exphbs.create({
-    helpers: require("handlebars-helpers")(),
+  helpers: require('handlebars-helpers')(),
 });
-
+const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT || 3001;
+const routes = require('./controllers');
 
-app.use(express.static(path.join(__dirname, 'public')));
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const { Comment, Destination, User } = require('./models/index');
+
+// initialize session
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {
+    maxAge: 300000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+};
+
+app.use(session(sess));
 
 // Configure Handlebars as the view engine
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
-// Handling the login form submission
-app.post('/login', (req, res) => {
-    // Handle login logic here
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+// app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
-// Handling the signup form submission
-app.post('/signup', (req, res) => {
-    // Handle signup logic here
-});
-
-app.get('/', (req, res) => {
-    const pageTitle = "Home";
-    let modalTitle = "Login or Sign Up"; // Default modal title
-    
-    // Check if the request contains an action parameter (login or signup)
-    if (req.query.action) {
-        if (req.query.action === 'login') {
-            modalTitle = 'Login';
-        } else if (req.query.action === 'signup') {
-            modalTitle = 'Sign Up';
-        }
-    }
-
-    res.render('homepage', { pageTitle, modalTitle });
-});
-
-app.get('/add-new', (req, res) => {
-  const pageTitle = "Add New Destination";
-//   const loggedIn = req.isAuthenticated(); 
-
-  res.render('add-new', { pageTitle
-    // , loggedIn 
-});
-});
+app.use(routes);
 
 // Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
 });
