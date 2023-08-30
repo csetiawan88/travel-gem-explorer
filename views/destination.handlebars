@@ -16,9 +16,9 @@
           </div>
           
           <div class="comments-container mt-4 p-3">
-           {{#each comments}}
+            {{#each comments}}
             <div class="comment">
-              <p><strong>{{this.user}}</strong>: {{this.text}}</p>
+              <p><strong>{{ this.user }}</strong>: {{ this.text }}</p>
             </div>
             {{/each}}
           </div>
@@ -42,19 +42,22 @@
           <div class="side-box text-center">
             <h4>explore more</h4>
             <br>
-          </div>
-          <div class="destination-links">
-            <div class="card-deck">
-              {{#each latestDestinations}}
-              <div class="card mb-3">
-                <img src="{{this.image_source}}" class="card-img-top" alt="{{this.name}}">
-                <div class="card-body">
-                  <h5 class="card-title">{{this.name}}</h5>
-                  <p class="card-text">{{this.location}}</p>
+            
+            <div class="destination-links">
+              <div class="card-deck">
+
+
+                {{#each latestDestinations}}
+                <div class="card sidebar-card mb-1">
+                  <div class="card-image" style="background-image: url('{{ image_source }}');"></div>
+                  <div class="card-body">
+                    <a href="/api/destinations/{{ id }}" class="card-link">{{ name }}</a>
+                  </div>
                 </div>
+                                {{/each}}
               </div>
-              {{/each}}
             </div>
+            
           </div>
         </div>
       </div>
