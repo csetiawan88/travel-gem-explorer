@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const passport = require('passport');
 
-router.post('/', async (req, res) => {
+
+router.post('/', checkNotAuthenticated, async (req, res) => {
   try {
     const userData = await User.create(req.body);
     console.log('Response:', userData);
@@ -17,37 +19,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.post('/login', async (req, res) => {
-  try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
-
-    if (!userData) {
-      console.log('User not found');
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
-      return;
-    }
-
-    const validPassword = await userData.checkPassword(req.body.password);
-
-    if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
-      return;
-    }
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-
-      res.json({ user: userData, message: 'You are now logged in!' });
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/',
+  failureFlash: true
+}));
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
@@ -58,5 +34,14 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+function checkNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    req.session.logged_in = true;
+    return res.redirect('/');
+  }
+  req.session.logged_in = false;
+  next();
+};
 
 module.exports = router;

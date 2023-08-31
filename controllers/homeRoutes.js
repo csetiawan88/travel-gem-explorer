@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const { Destination, User, Comment } = require('../models');
-const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', checkAuthenticated, async (req, res) => {
   try {
     const destinationData = await Destination.findAll();
 
@@ -15,5 +14,12 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    req.session.logged_in = true;
+  }
+  next();
+};
 
 module.exports = router;
