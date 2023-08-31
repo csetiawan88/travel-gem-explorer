@@ -19,6 +19,21 @@ router.get('/userDestination/:userId', async (req, res) => {
   }
 });
 
+router.post('/create-destination', withAuth, async (req, res) => {
+  console.log(req.body);
+  try {
+    const newDestination = await Destination.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
+
+    res.status(200).json(newDestination);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const destinationId = req.params.id;
@@ -37,6 +52,7 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 });
 
+// TODO: CHECK IF THIS WORKS
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const destinationData = await Destination.destroy({
@@ -64,13 +80,9 @@ router.get('/:id', async (req, res) => {
     // Fetch destination data from the database based on the ID
     const destinationData = await Destination.findByPk(destinationId);
     const commentsData = await Comment.findAll({
-      attributes: [
-        'id',
-        'comment',
-        [col('user.name'), 'userName'],
-      ],
+      attributes: ['id', 'comment', [col('user.name'), 'userName']],
       where: {
-          destination_id: destinationId,
+        destination_id: destinationId,
       },
       include: { model: User, as: 'user' },
       raw: true,
@@ -87,15 +99,14 @@ router.get('/:id', async (req, res) => {
       attributes: ['id', 'image_source', 'name'],
       where: {
         id: {
-          [Op.not]: currentDestinationId
-        }
+          [Op.not]: currentDestinationId,
+        },
       },
-      raw: true, 
+      raw: true,
       limit: 3,
       order: [['id', 'DESC']],
     });
-   
-    
+
     console.log('latestDestinations:', latestDestinations);
 
     // Render the destination.handlebars template and pass in the data
@@ -110,6 +121,5 @@ router.get('/:id', async (req, res) => {
     res.status(500).send('An error occurred while fetching destination data.');
   }
 });
-
 
 module.exports = router;
