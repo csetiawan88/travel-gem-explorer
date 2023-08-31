@@ -2,13 +2,12 @@ const router = require('express').Router();
 const { User } = require('../../models');
 const passport = require('passport');
 
-
 router.post('/', checkNotAuthenticated, async (req, res) => {
   try {
     const userData = await User.create(req.body);
     console.log('Response:', userData);
     req.session.save(() => {
-      req.session.user_id = userData.id;
+      req.session.userId = userData.id;
       loggedIn: req.session.logged_in = true;
 
       res.status(200).json(userData);
@@ -19,11 +18,15 @@ router.post('/', checkNotAuthenticated, async (req, res) => {
   }
 });
 
-router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/',
-  failureFlash: true
-}));
+router.post(
+  '/login',
+  checkNotAuthenticated,
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/',
+    failureFlash: true,
+  })
+);
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
@@ -42,6 +45,6 @@ function checkNotAuthenticated(req, res, next) {
   }
   req.session.logged_in = false;
   next();
-};
+}
 
 module.exports = router;
