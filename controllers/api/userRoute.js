@@ -7,7 +7,7 @@ router.post('/', checkNotAuthenticated, async (req, res) => {
     const userData = await User.create(req.body);
     console.log('Response:', userData);
     req.session.save(() => {
-      req.session.userId = userData.id;
+      req.session.passport = {user: userData.id};
       loggedIn: req.session.logged_in = true;
 
       res.status(200).json(userData);

@@ -58,7 +58,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     const destinationData = await Destination.destroy({
       where: {
         id: req.params.id,
-        userId: req.session.userId,
+        userId: req.session.passport.user,
       },
     });
 
@@ -80,7 +80,7 @@ router.get('/:id', async (req, res) => {
     // Fetch destination data from the database based on the ID
     const destinationData = await Destination.findByPk(destinationId);
     const commentsData = await Comment.findAll({
-      attributes: ['id', 'comment', [col('user.name'), 'userName']],
+      attributes: ['id', 'comment', [col('user.name'), 'userName'], [col('user.id'), 'userId']],
       where: {
         destination_id: destinationId,
       },
@@ -107,13 +107,21 @@ router.get('/:id', async (req, res) => {
       order: [['id', 'DESC']],
     });
 
+    const updateCommentData = commentsData.map((comment) => {
+      comment = {
+        ...comment,
+        isOwnComment: (comment?.userId === req?.session?.passport?.user),// adding up own comment boolean value for the users
+      };
+      return comment;
+    });
+
     console.log('latestDestinations:', latestDestinations);
 
     // Render the destination.handlebars template and pass in the data
     res.render('destination', {
       ...destinationData.dataValues,
       latestDestinations,
-      comments: commentsData,
+      comments: updateCommentData,
       loggedIn: req.session.logged_in,
     });
   } catch (error) {
