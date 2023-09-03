@@ -31,7 +31,7 @@ router.get('/destinationComment/:destinationId', (req, res) => {
 router.post('/', (req, res) => {
     Comment.create({
       comment: req.body.comment,
-      userId: req.session.passport.user,
+      userId: req?.session?.passport?.user,
       destinationId: req.body.destinationId,
     })
     .then (commentData => res.json(commentData))
@@ -39,5 +39,26 @@ router.post('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+// Delete comments API
+router.delete('/:id', async (req, res) => {
+    try {
+      const destinationData = await Comment.destroy({
+        where: {
+          id: req.params.id,
+          userId: req.session.passport.user,
+        },
+      });
+      console.log(destinationData);
+      if (!destinationData) {
+        res.status(404).json({ message: 'No destination found with this id!' });
+        return;
+      }
+  
+      res.status(200).json(destinationData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });  
 
 module.exports = router;

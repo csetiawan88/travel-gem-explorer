@@ -24,3 +24,22 @@ const addNewComment = async (event) => {
 document
   .getElementById('comment-form')
   .addEventListener('submit', addNewComment);
+
+const onDeleteComment = async (event) => {
+  const commentId = event?.target?.dataset?.id;
+  const response = await fetch(`/api/comments/${commentId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  if (response.ok) {
+    location.reload();
+  } else {
+    alert('Failed to delete comment.');
+  }
+}
+
+document
+  .getElementById('delete-btn')
+  .addEventListener('click', onDeleteComment)

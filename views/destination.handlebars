@@ -22,7 +22,14 @@
           <div class='comments-container mt-4 p-3'>
             {{#each comments}}
               <div class='comment'>
-                <p><strong>{{userName}}</strong>: {{comment}}</p>
+                <p>
+                  <strong>{{userName}}</strong>: {{comment}}
+                  {{#if isOwnComment}}
+                    <span id="delete-btn" data-id={{id}} class="delete-icon">
+                      <img src="/images/icons8-delete-50.png" alt="delete_icon" data-id={{id}}>
+                    </span>
+                  {{/if}}
+                </p>
               </div>
             {{/each}}
           </div>
